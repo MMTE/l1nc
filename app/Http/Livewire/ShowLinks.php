@@ -12,6 +12,12 @@ class ShowLinks extends Component
 
     protected $listeners = ['linkCreated' => 'render'];
 
+    public $defaultDomain;
+
+    public function mount(){
+        $this->defaultDomain = env('APP_URL');
+    }
+
     public function render()
     {
         return view('livewire.show-links',[

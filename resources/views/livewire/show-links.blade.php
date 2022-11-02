@@ -21,8 +21,10 @@
                 <div class="pl-4 pr-6 py-4 mb-2 bg-gray-100 shadow rounded">
                     <div class="flex flex-wrap items-center -mx-4">
                         <div class="w-full md:w-3/6 mb-4 md:mb-0 px-4 flex items-center">
-                            <h4 class="text-xs font-medium">{{$link->url}}</h4>
-                            <span>-></span>
+                            <a href="{{$defaultDomain . '/' .$link->url}}" class="text-xs font-medium">
+                                <strong>{{$defaultDomain . '/' .$link->url}}</strong>
+                            </a>
+                            <span>&nbsp;👉&nbsp;</span>
                             <h4 class="text-xs font-medium">{{$link->original}}</h4>
                         </div>
                         <div class="w-auto ml-auto mr-16 px-4 flex items-center text-xs text-gray-500">

@@ -8,6 +8,6 @@
 
     </head>
     <body class="antialiased">
-       
+        <p>welcome to l1nc</p>
     </body>
 </html>

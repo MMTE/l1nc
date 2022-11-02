@@ -22,12 +22,18 @@ Route::middleware([
 
 
 Route::get('{url}', function ($url) {
-    $link = \App\Models\Link::where('url', $url)->first();
+
+    $domain = request()->get('domain');
+    $domain_id = $domain ? $domain->id : null;
+
+    $link = \App\Models\Link::where('url', $url)->where('domain_id', $domain_id)->first();
 
     if ($link) {
         return redirect()->away($link->original);
     } else {
         // not found
+        return 'link not found';
     }
-});
+
+})->middleware(['domain']);
 

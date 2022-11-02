@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,11 +13,9 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('links', function (Blueprint $table) {
+        Schema::create('domains', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('domain_id')->nullable()->constrained();
-            $table->string('url');
-            $table->string('original');
+            $table->string('domain');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('links');
+        Schema::dropIfExists('domains');
     }
 };
