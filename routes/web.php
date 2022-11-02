@@ -18,6 +18,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/domains', function () {
+        return view('domains');
+    })->name('domains');
 });
 
 

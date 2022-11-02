@@ -17,6 +17,8 @@ class CreateLink extends Component
 
     public function submit()
     {
+        // when link is empty show kobeey gif
+
 
         // link generator?
         /*
@@ -39,7 +41,6 @@ class CreateLink extends Component
         $this->link = '';
         $this->emit('linkCreated');
     }
-
 
     function generateRandomString($length = 5)
     {

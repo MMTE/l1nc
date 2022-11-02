@@ -1,8 +1,9 @@
 <div>
+    {{-- Success is as dangerous as failure. --}}
     <section class="py-8">
         <div class="container px-4 mx-auto">
             <div class="flex flex-wrap items-center mb-6">
-                <h3 class="text-xl font-bold">Links:</h3>
+                <h3 class="text-xl font-bold">Domains:</h3>
                 <div class="w-full md:w-auto my-6 md:my-0 flex items-center ml-auto bg-white border rounded">
                     <input class="py-3 text-sm text-gray-200" type="text" placeholder="Type to search...">
                     <button class="ml-2 text-gray-200 hover:text-gray-300">
@@ -16,15 +17,11 @@
 
             </div>
 
-            @foreach ($links as $link)
+            @foreach ($domains as $domain)
                 <div class="pl-4 pr-6 py-4 mb-2 bg-gray-100 shadow rounded">
                     <div class="flex flex-wrap items-center -mx-4">
                         <div class="w-full md:w-3/6 mb-4 md:mb-0 px-4 flex items-center">
-                            <a href="{{$defaultDomain . '/' .$link->url}}" class="text-xs font-medium">
-                                <strong>{{$defaultDomain . '/' .$link->url}}</strong>
-                            </a>
-                            <span>&nbsp;👉&nbsp;</span>
-                            <h4 class="text-xs font-medium">{{$link->original}}</h4>
+                            <p>{{$domain->domain}}</p>
                         </div>
                         <div class="w-auto ml-auto mr-16 px-4 flex items-center text-xs text-gray-500">
           <span class="mr-1">
@@ -53,7 +50,7 @@
                 </div>
             @endforeach
 
-            {{ $links->links() }}
+            {{ $domains->links() }}
 
         </div>
     </section>
