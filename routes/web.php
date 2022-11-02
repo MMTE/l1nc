@@ -2,19 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('test', function () {
+    return \App\Models\Link::all();
 });
 
 Route::middleware([
@@ -26,3 +19,15 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::get('{url}', function ($url) {
+    $link = \App\Models\Link::where('url', $url)->first();
+
+    if ($link) {
+        return redirect()->away($link->original);
+    } else {
+        // not found
+    }
+});
+
