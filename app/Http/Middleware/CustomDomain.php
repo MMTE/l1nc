@@ -19,9 +19,10 @@ class CustomDomain
     {
         $domain = null;
         $domainName = $request->getHost();
-        $domain = Domain::where('url', $domainName)->first();
 
-        if($domainName = env('APP_URL')){
+        $domain = Domain::where('domain', $domainName)->first();
+
+        if ($domainName == env('APP_URL')) {
             return $next($request);
         }
 

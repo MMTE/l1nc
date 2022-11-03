@@ -11,17 +11,16 @@
                 <div class="px-5 py-2">
                     <h2>Welcome to <strong>L1nc</strong></h2>
                     <hr class="mb-5">
-                    <p>
-                        <livewire:create-link/>
+                    <livewire:create-link/>
                 </div>
             </div>
         </div>
 
     </section>
 
-    <section class="">
+    <section class="pb-10">
         <div class="container px-4 mx-auto">
-            <div class="mt-5 bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="px-5 py-2">
                     <livewire:show-links/>
                 </div>

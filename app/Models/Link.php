@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Link extends Model
 {
     use HasFactory;
+
+    public function domain(){
+        return $this->belongsTo(Domain::class);
+    }
+
 }

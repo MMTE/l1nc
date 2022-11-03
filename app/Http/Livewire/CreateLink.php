@@ -2,7 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Domain;
 use App\Models\Link;
+use App\Repositories\DomainRepository;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class CreateLink extends Component
@@ -10,32 +13,23 @@ class CreateLink extends Component
 
     public $link;
     public $protocol = 'https';
+    public $domain = null;
 
     public function render()
     {
-        return view('livewire.create-link');
+        return view('livewire.create-link', [
+            'domains' => Domain::all()
+        ]);
     }
 
     public function submit()
     {
-        // when link is empty show kobeey gif
-
-
-        // link generator?
-        /*
-         * 1 character only remains available for x time
-         * 2 character only remains for .....
-         * 3 character only remains for ....
-         * 4 character only remains for ....
-         * and so on ...
-         * but more than 4 characters will remain forever
-         * custom names
-         *
-         */
+        $domain = Domain::where('domain', $this->domain)->first();
 
         $link = new Link();
+        $link->domain_id = $domain?->id;
         $link->url = $this->generateRandomString();
-        $link->original = $this->link;
+        $link->original = (new DomainRepository())->parsUrl($this->link);
         $link->save();
 
         session()->flash('message', 'Link Created Successfully');

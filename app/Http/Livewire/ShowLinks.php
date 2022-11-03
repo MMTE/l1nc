@@ -21,7 +21,7 @@ class ShowLinks extends Component
     public function render()
     {
         return view('livewire.show-links',[
-            'links' => Link::paginate(10),
+            'links' => Link::latest()->paginate(10),
         ]);
     }
 }

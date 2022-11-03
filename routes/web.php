@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Link;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -7,6 +8,8 @@ Route::get('/', function () {
 });
 
 Route::get('test', function () {
+
+    return Link::latest()->with('domain')->first();
     $url = 'google.com';
     return (new \App\Repositories\DomainRepository())->parsUrl($url);
 });
@@ -22,15 +25,19 @@ Route::middleware([
     Route::get('/domains', function () {
         return view('domains');
     })->name('domains');
+    Route::get('/links/{link}', function (Link $link) {
+        return view('link')->with(compact('link'));
+    })->name('domains');
 });
 
 
 Route::get('{url}', function ($url) {
 
     $domain = request()->get('domain');
+
     $domain_id = $domain ? $domain->id : null;
 
-    $link = \App\Models\Link::where('url', $url)->where('domain_id', $domain_id)->first();
+    $link = Link::where('url', $url)->where('domain_id', $domain_id)->first();
 
     if ($link) {
         return redirect()->away($link->original);
