@@ -7,7 +7,8 @@ Route::get('/', function () {
 });
 
 Route::get('test', function () {
-    return \App\Models\Link::all();
+    $url = 'google.com';
+    return (new \App\Repositories\DomainRepository())->parsUrl($url);
 });
 
 Route::middleware([

@@ -9,6 +9,7 @@ class CreateLink extends Component
 {
 
     public $link;
+    public $protocol = 'https';
 
     public function render()
     {
