@@ -18,14 +18,7 @@
 
     </section>
 
-    <section class="pb-10">
-        <div class="container px-4 mx-auto">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="px-5 py-2">
-                    <livewire:show-links/>
-                </div>
-            </div>
-        </div>
-    </section>
+    <livewire:show-links/>
+
 
 </x-app-layout>

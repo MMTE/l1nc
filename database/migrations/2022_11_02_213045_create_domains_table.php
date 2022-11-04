@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('domains', function (Blueprint $table) {
             $table->id();
+            // creator id
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->string('domain');
+            $table->boolean('is_verified')->default(false);
             $table->timestamps();
         });
     }

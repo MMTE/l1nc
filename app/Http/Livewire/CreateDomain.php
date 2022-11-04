@@ -14,9 +14,9 @@ class CreateDomain extends Component
         return view('livewire.create-domain');
     }
 
-    public function submit(){
+    public function submit()
+    {
         // extract domain into subdomain and primary domain only
-
         $domain = new Domain();
         $domain->domain = $this->domain;
         $domain->save();

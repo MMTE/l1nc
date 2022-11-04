@@ -29,7 +29,7 @@ class CreateLink extends Component
         $link = new Link();
         $link->domain_id = $domain?->id;
         $link->url = $this->generateRandomString();
-        $link->original = (new DomainRepository())->parsUrl($this->link);
+        $link->destination = (new DomainRepository())->parsUrl($this->link);
         $link->save();
 
         session()->flash('message', 'Link Created Successfully');

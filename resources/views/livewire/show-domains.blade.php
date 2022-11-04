@@ -1,5 +1,4 @@
 <div>
-    {{-- Success is as dangerous as failure. --}}
     <section class="py-8">
         <div class="container px-4 mx-auto">
             <div class="flex flex-wrap items-center mb-6">
@@ -16,6 +15,9 @@
                 </div>
 
             </div>
+
+
+
 
             @foreach ($domains as $domain)
                 <div class="pl-4 pr-6 py-4 mb-2 bg-gray-100 shadow rounded">
@@ -34,7 +36,15 @@
                             <p>1h ago</p>
                         </div>
                         <div class="w-auto mr-16 px-4">
-                            <p class="text-xs text-gray-500">25MB</p>
+                            <p class="text-xs text-gray-500">{{ $domain->is_verified ? 'Verified' : 'verification needed' }}</p>
+                            @if(!$domain->is_verified)
+                                <a>
+                                    <button wire:click="verify({{$domain}})"
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                        verify
+                                    </button>
+                                </a>
+                            @endif
                         </div>
                         <div class="w-auto px-4">
                             <a href="#">
@@ -54,4 +64,11 @@
 
         </div>
     </section>
+    <div>
+        <div style="height: 32rem;">
+            <livewire:livewire-column-chart
+                :column-chart-model="$columnChartModel"
+            />        </div>
+
+    </div>
 </div>

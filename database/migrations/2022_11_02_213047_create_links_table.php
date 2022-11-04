@@ -16,7 +16,10 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('domain_id')->nullable()->constrained();
             $table->string('url');
-            $table->string('original');
+            $table->string('destination');
+            $table->unsignedBigInteger('clicks')->default(0);
+            $table->timestamp('expire')->nullable();
+            $table->string('status')->default('ACTIVE');
             $table->timestamps();
         });
     }
