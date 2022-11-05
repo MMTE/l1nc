@@ -18,17 +18,10 @@ class CustomDomain
     public function handle(Request $request, Closure $next)
     {
         $domain = null;
+
         $domainName = $request->getHost();
 
         $domain = Domain::where('domain', $domainName)->first();
-
-        if ($domainName == env('APP_URL')) {
-            return $next($request);
-        }
-
-        if (!$domain) {
-            return redirect()->to(env('APP_URL'));
-        }
 
         $request->merge([
             'domain' => $domain,

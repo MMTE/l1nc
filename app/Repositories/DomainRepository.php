@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Helpers\Helper;
+use App\Models\Link;
 use Illuminate\Support\Facades\Cache;
 
 class DomainRepository
@@ -25,6 +26,18 @@ class DomainRepository
 
         // fix this disaster! http and https into another function
         return redirect()->away('http://' . $domain->domain . ':8000' . '/custom-domain/verify/?secret=' . $randomVerificationCode);
+    }
+
+    public function createLink($domain, $user, $team, $destination, $customUrl)
+    {
+        $link = new Link();
+        $link->domain_id = $domain?->id;
+        $link->url = $customUrl ?: Helper::generateRandomString();
+        $link->team_id = $team->id;
+        $link->user_id = $user->id;
+        $link->destination = (new DomainRepository())->parsUrl($destination);
+        $link->save();
+        return $link;
     }
 
 }

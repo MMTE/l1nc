@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Link;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -14,14 +15,18 @@ class ShowLinks extends Component
 
     public $defaultDomain;
 
-    public function mount(){
+    public function mount()
+    {
         $this->defaultDomain = env('APP_URL');
     }
 
     public function render()
     {
-        return view('livewire.show-links',[
-            'links' => Link::latest()->paginate(10),
+        $user = Auth::user();
+        $team = $user->currentTeam;
+
+        return view('livewire.show-links', [
+            'links' => Link::where('team_id', $team->id)->where('user_id', $user->id)->latest()->paginate(10),
         ]);
     }
 }

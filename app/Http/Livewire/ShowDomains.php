@@ -17,32 +17,21 @@ class ShowDomains extends Component
     protected $listeners = ['domainCreated' => 'render'];
 
     public $defaultDomain;
-//    public $columnChartModel;
 
-    public function mount(){
-
-
+    public function mount()
+    {
         $this->defaultDomain = env('APP_URL');
     }
 
     public function render()
     {
-        $columnChartModel =
-            (new ColumnChartModel())
-                ->setTitle('Expenses by Type')
-                ->addColumn('Food', 100, '#f6ad55')
-                ->addColumn('Shopping', 200, '#fc8181')
-                ->addColumn('Travel', 300, '#90cdf4')
-        ;
-
-
-        return view('livewire.show-domains',[
-            'domains' => Domain::paginate(10),
-            'columnChartModel' => $columnChartModel
+        return view('livewire.show-domains', [
+            'domains' => Domain::paginate(10)
         ]);
     }
 
-    public function verify(Domain $domain){
+    public function verify(Domain $domain)
+    {
         return (new DomainRepository())->verifyCustomDomain($domain);
     }
 

@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('domains', function (Blueprint $table) {
+        Schema::create('views', function (Blueprint $table) {
             $table->id();
-            // creator id
-            $table->foreignId('user_id')->nullable()->constrained();
-
-//            $table->foreignId('team_id')->nullable()->constrained();
-            $table->string('domain');
-            $table->boolean('is_verified')->default(false);
+            $table->foreignId('link_id')->constrained();
+            $table->json('ip_details')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('domains');
+        Schema::dropIfExists('views');
     }
 };

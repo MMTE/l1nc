@@ -13,6 +13,16 @@
                     <p>this is the short link information:</p>
                     <h2>{{$link->linkUrl}}</h2>
                     <hr class="mb-5">
+
+                    view: {{$link->clicks}}
+                </div>
+                <div>
+                    <div style="height: 32rem;" class="px-2">
+                        <livewire:livewire-column-chart
+                            :column-chart-model="$columnChartModel"
+                        />
+                    </div>
+
                 </div>
             </div>
         </div>

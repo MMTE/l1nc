@@ -15,6 +15,8 @@ return new class extends Migration {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
             $table->foreignId('domain_id')->nullable()->constrained();
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('team_id')->nullable()->constrained();
             $table->string('url');
             $table->string('destination');
             $table->unsignedBigInteger('clicks')->default(0);
