@@ -35,7 +35,7 @@ class CreateLink extends Component
     public function updatedCustomUrl($value)
     {
         $domain = Domain::where('domain', $this->domain)->first();
-        $link = Link::where('domain_id', $domain->id)->where('url', $value)->first();
+        $link = Link::where('domain_id', $domain?->id)->where('url', $value)->first();
         if ($link) {
             $this->addError('customUrl', 'This URL is not available to use!');
         } else {
