@@ -20,5 +20,4 @@
 
     <livewire:show-links/>
 
-
 </x-app-layout>
