@@ -25,7 +25,7 @@ class DomainRepository
         Cache::put($randomVerificationCode, 'domain_' . $domain->id, 150);
 
         // fix this disaster! http and https into another function
-        return redirect()->away('http://' . $domain->domain . ':8000' . '/custom-domain/verify/?secret=' . $randomVerificationCode);
+        return redirect()->away('http://' . $domain->domain . '/custom-domain/verify/?secret=' . $randomVerificationCode);
     }
 
     public function createLink($domain, $user, $team, $destination, $customUrl)
