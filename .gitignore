@@ -18,3 +18,4 @@ yarn-error.log
 /.vscode
 db.sqlite
 todo.md
+fly.toml
