@@ -8,5 +8,5 @@
     }
 
     gtag('js', new Date());
-    gtag('config', {{ env('GA_CODE') }});
+    gtag('config', '{{ env('GA_CODE') }}');
 </script>

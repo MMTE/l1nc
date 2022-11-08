@@ -19,7 +19,7 @@ processes = []
   DB_CONNECTION = "mysql"
   DB_HOST = "l1nc-mysql.internal"
   DB_DATABASE= "l1nc_db"
-
+  GA_CODE = "G-JXQH3N11C2"
 [experimental]
   allowed_public_ports = []
   auto_rollback = true
