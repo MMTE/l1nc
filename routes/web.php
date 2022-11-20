@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 Route::get('test', function () {
 
+    return Link::latest()->get();
+
 
     $view = View::latest()->first();
     return json_decode($view->ip_details)->geoplugin_countryName;

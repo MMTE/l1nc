@@ -33,8 +33,8 @@ class DomainRepository
         $link = new Link();
         $link->domain_id = $domain?->id;
         $link->url = $customUrl ?: Helper::generateRandomString();
-        $link->team_id = $team->id;
-        $link->user_id = $user->id;
+        $link->team_id = $team?->id;
+        $link->user_id = $user?->id;
         $link->destination = (new DomainRepository())->parsUrl($destination);
         $link->save();
         return $link;
